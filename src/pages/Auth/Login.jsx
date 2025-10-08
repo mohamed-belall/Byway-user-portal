@@ -62,7 +62,7 @@ export const Login = () => {
   return (
     <div className="flex h-screen items-center justify-center">
       {/* left section */}
-      <div className="flex w-1/2 flex-col justify-center px-16 bg-white">
+      <div className="flex w-1/2 flex-col justify-center px-16 md:px-4 bg-white">
         <div className="max-w-md w-full mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">
             Sign in to your account
@@ -132,15 +132,15 @@ export const Login = () => {
               Sign Up
             </button>
           </div>
-          <div className="flex items-center my-8">
+          <div className="flex  items-center my-8">
             <div className="flex-grow h-px bg-gray-300"></div>
             <span className="px-4 text-sm text-gray-500">Sign in with</span>
             <div className="flex-grow h-px bg-gray-300"></div>
           </div>
 
           {/* Social Login */}
-          <div className="flex gap-4">
-            <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
+          <div className="flex justify-center items-center  gap-4">
+            <button className=" flex items-center justify-center px-2 gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
                 alt="Facebook"
@@ -149,11 +149,11 @@ export const Login = () => {
               Facebook
             </button>
 
-            <div className="flex-1">
+            <div className="px-2">
               <GoogleAuthButton />
             </div>
 
-            <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
+            <button className=" flex items-center justify-center px-2 gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/732/732221.png"
                 alt="Microsoft"
@@ -166,7 +166,7 @@ export const Login = () => {
       </div>
 
       {/* right section */}
-      <div className="w-1/2 mx-20 my-20 shadow-2xl border border-gray-300 rounded-xl  overflow-hidden ">
+      <div className="w-1/2 md:w-1/3 text-start mr-10 my-30 shadow-2xl border border-gray-300 rounded-xl  overflow-hidden ">
         <img src={lmsImage} alt="lms" className="object-fill" />
       </div>
     </div>

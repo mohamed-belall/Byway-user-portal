@@ -210,8 +210,8 @@ const SignUpPage = () => {
           </div>
 
           {/* Social Login */}
-          <div className="flex gap-4">
-            <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
+          <div className="flex justify-center items-center  gap-4">
+            <button className=" flex items-center justify-center px-2 gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
                 alt="Facebook"
@@ -219,11 +219,12 @@ const SignUpPage = () => {
               />
               Facebook
             </button>
-            <div className="flex-1">
+
+            <div className="px-2">
               <GoogleAuthButton />
             </div>
 
-            <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
+            <button className=" flex items-center justify-center px-2 gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-50">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/732/732221.png"
                 alt="Microsoft"
