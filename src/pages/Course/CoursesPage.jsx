@@ -77,15 +77,13 @@ const CoursesPage = () => {
         Sort: courseFilter.Sort,
       });
 
-      // console.log(response.data);
+     
       if (response.success) {
         setCourses(response.data.data);
       }
     } catch (err) {
       console.error(err.message);
-    } finally {
-      // console.log(courses);
-    }
+    } 
   };
 
   const [courses, setCourses] = useState([]);
@@ -107,16 +105,14 @@ const CoursesPage = () => {
           pageSize: 10,
         });
 
-        // console.log(response.data);
+    
         if (response.success) {
           setCourses(response.data.data);
           setPageCount(response.data.count);
         }
       } catch (err) {
         console.error(err.message);
-      } finally {
-        // console.log(courses);
-      }
+      } 
     };
 
     featchCourses();
@@ -222,7 +218,7 @@ const CoursesPage = () => {
                               ...prev,
                               NumberOfLecture: opt.value,
                             }));
-                            // console.log(courseFilter);
+                           
                           }}
                         />
                         {opt.label}
@@ -332,7 +328,7 @@ const CoursesPage = () => {
                                     (id) => id !== parseInt(value)
                                   ),
                             }));
-                            // console.log(courseFilter);
+                      
                           }}
                         />
                         {cat.lable}

@@ -32,7 +32,7 @@ const ShoppingCartPage = () => {
       const response = await removeItem(id);
       if (response.success) {
         const updatedCart = await getCartItems();
-        // console.log(updatedCart.data);
+        
         if (updatedCart.success) {
           setCart(updatedCart.data);
         }

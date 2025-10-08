@@ -20,10 +20,10 @@ export const CourseFiltersAtom = atom({
     Sort: null,
 });
 
-// Search filter
+
 export const searchAtom = atom("");
 
-// Modal state (delete)
+
 
 export const CourseFormAtom = atom({
   open: false,

@@ -48,13 +48,10 @@ const CourseDetailsPage = () => {
           courseDetails.data.categoryId
         );
         settopCourses(topCourses.data);
-
-        // console.log("Course Details:", courseDetails);
       } catch (error) {
         console.error("Error fetching course details:", error);
       } finally {
         setLoading(false);
-        // console.log(course);
       }
     };
     fetchCourse();
@@ -111,25 +108,25 @@ const CourseDetailsPage = () => {
     : cart.items?.some((c) => c.id === course.id);
 
   const handleAddToCart = async () => {
-    // console.log(course);
+
     setLoading2(true);
     if (!isInCart) {
       try {
         const response = await addToCart(course.id);
 
         if (response.success) {
-          // 2. Refresh cart from DB
+        
           const updatedCart = await getCartItems();
-          // console.log(updatedCart.data.items);
+        
           if (updatedCart.success) {
-            // setCart(updatedCart);
+          
             setCart(updatedCart.data);
           }
         }
       } catch (e) {
         console.log(e);
       } finally {
-        // console.log(cart);
+       
         setLoading2(false);
       }
     }

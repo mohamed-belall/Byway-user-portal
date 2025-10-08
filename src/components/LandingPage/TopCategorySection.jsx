@@ -22,7 +22,7 @@ const TopCategorySection = () => {
       try {
         const response = await LandingPageServices.getCategories();
 
-        // console.log(response);
+      
         if (response.success) {
           setCategories(response.data);
         }

@@ -29,10 +29,10 @@ export const Login = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
-    // console.log(auth);
+
     try {
       const data = await authService.login(formData);
-      console.log(data.data);
+
       setAuth({
         isAuthenticated: true,
         token: data.data.token,
@@ -50,14 +50,13 @@ export const Login = () => {
     const featchCart = async () => {
       try {
         const updatedCart = await getCartItems();
-        // console.log(updatedCart.data);
+
         if (updatedCart.success) {
           setCart(updatedCart.data);
         }
       } catch (e) {}
     };
     featchCart();
-    // console.log("called");
   }, [auth.isAuthenticated == true]);
 
   return (

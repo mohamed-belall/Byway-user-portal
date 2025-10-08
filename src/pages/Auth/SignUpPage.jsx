@@ -35,7 +35,7 @@ const SignUpPage = () => {
 
     try {
       const data = await authService.signUp(formData);
-      console.log(data.data);
+
       setAuth({
         isAuthenticated: true,
         token: data.data.token,
@@ -53,14 +53,13 @@ const SignUpPage = () => {
     const featchCart = async () => {
       try {
         const updatedCart = await getCartItems();
-        // console.log(updatedCart.data);
+
         if (updatedCart.success) {
           setCart(updatedCart.data);
         }
       } catch (e) {}
     };
     featchCart();
-    // console.log("called");
   }, [auth.isAuthenticated == true]);
 
   return (

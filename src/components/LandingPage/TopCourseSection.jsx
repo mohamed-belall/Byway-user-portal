@@ -20,7 +20,6 @@ const TopCourseSection = () => {
       try {
         const response = await LandingPageServices.getTopCourses();
 
-        // console.log(response);
         if (response.success) {
           setCourses(response.data);
         }

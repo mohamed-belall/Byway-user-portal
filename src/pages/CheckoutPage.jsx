@@ -18,7 +18,7 @@ const CheckoutPage = () => {
     const featchCart = async () => {
       try {
         const updatedCart = await getCartItems();
-        // console.log(updatedCart.data);
+
         if (updatedCart.success) {
           setCart(updatedCart.data);
         }
@@ -43,7 +43,6 @@ const CheckoutPage = () => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // console.log(form);
   };
   const [errors, setErrors] = useState({});
   const validate = () => {
@@ -77,6 +76,7 @@ const CheckoutPage = () => {
       }
     } catch (e) {
     } finally {
+      setLoadingCheckout(false);
     }
   };
   const handelCheckout = async (paymentData) => {

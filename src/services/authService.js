@@ -2,9 +2,9 @@ import api from "./api";
 
 const authService = {
   login: async (credentials) => {
-    // console.log(credentials);
+    
     const response = await api.post("/Account/login", credentials);
-    // console.log(response);
+
 
     if (!response.data.success) {
       throw new Error(response.data.message || "Login failed");
@@ -19,9 +19,9 @@ const authService = {
   },
 
   signUp: async (credentials) => {
-    // console.log(credentials);
+ 
     const response = await api.post("/Account/register", credentials);
-    // console.log(response.data);
+  
 
     if (!response.data.success) {
       throw new Error(response.data.message || "Register Failed");
@@ -57,7 +57,7 @@ const authService = {
 
   logout: () => {
     localStorage.removeItem("token");
-    // localStorage.removeItem("user");
+
     localStorage.removeItem("role");
   },
 };

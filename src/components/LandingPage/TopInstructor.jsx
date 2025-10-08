@@ -10,7 +10,6 @@ const TopInstructor = () => {
       try {
         const response = await LandingPageServices.getTopInstructors();
 
-        // console.log(response);
         if (response.success) {
           setInstructors(response.data);
         }
