@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-myBg: #f8fafc;
+}
+
+@utility filter-button {
+  @apply flex flex-row  justify-between items-center text-xl border-b-2 border-b-gray-200 pb-3 px-4 w-full;
+  /* text-shadow: 0 0 10px rgba(167, 139, 250, 0.5); */
+}
