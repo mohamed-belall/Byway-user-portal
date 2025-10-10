@@ -18,6 +18,7 @@ import { useAtom } from "jotai";
 import { cartWithPersistenceAtom } from "../../atoms/cartAtom";
 import useCartServices from "../../services/CartServices";
 import DOMPurify from "dompurify";
+import LoadingSpinner from "../../components/common/Spinner/LoadingSpinner";
 
 const CourseDetailsPage = () => {
   const { id } = useParams();
@@ -412,13 +413,13 @@ const CourseDetailsPage = () => {
             isInCart
               ? "text-lg font-semibold bg-white text-gray-400 border-2 rounded-xl py-3"
               : loading2
-              ? "text-lg font-semibold bg-black/20 text-white  rounded-xl py-3"
+              ? "flex justify-center text-lg font-semibold bg-black/20 text-white   rounded-xl py-3"
               : "text-lg font-semibold bg-black text-white  rounded-xl py-3"
           }
           onClick={handleAddToCart}
           disabled={isInCart}
         >
-          {isInCart ? "Added" : loading2 ? "Adding ..." : "Add to Cart"}
+          {isInCart ? "Added" : loading2 ? <LoadingSpinner/> : "Add to Cart"}
         </button>
         <button
           className="text-lg font-semibold border-2 rounded-xl py-3"

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useCartServices from "../../services/CartServices";
 import { cartWithPersistenceAtom } from "../../atoms/cartAtom";
 import GoogleAuthButton from "../../components/Auth/GoogleAuthButton";
+import LoadingSpinner from "../../components/common/Spinner/LoadingSpinner";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -185,10 +186,10 @@ const SignUpPage = () => {
               disabled={loading}
               className={`w-full ${
                 loading ? "bg-black/40" : "bg-black cursor-pointer"
-              }  text-white py-2 rounded-md font-medium hover:bg-gray-800 transition`}
+              }  flex justify-center text-white py-2 rounded-md font-medium hover:bg-gray-800 transition`}
             >
               {loading
-                ? "Creating Account In progress ..."
+                ? <LoadingSpinner /> 
                 : "Create Account →"}
             </button>
           </form>

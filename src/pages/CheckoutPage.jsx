@@ -7,9 +7,11 @@ import useCartServices from "../services/CartServices";
 import Visa from "../assets/icons/visa.png";
 import Mastercard from "../assets/icons/master.png";
 import Paypal from "../assets/icons/paypal.png";
+import LoadingSpinner from "../components/common/Spinner/LoadingSpinner";
+
 
 const CheckoutPage = () => {
-  const { getCartItems, checkout } = useCartServices();
+  const { getCartItems, checkout , addPayment } = useCartServices();
   const [loadingCheckout, setLoadingCheckout] = useState(false);
   const [cart, setCart] = useAtom(cartWithPersistenceAtom);
   const navigate = useNavigate();
@@ -47,9 +49,9 @@ const CheckoutPage = () => {
   const [errors, setErrors] = useState({});
   const validate = () => {
     const newErrors = {};
+    
     if (!form.country) newErrors.country = "Country is required";
     if (!form.city) newErrors.city = "City is required";
-
     if (method === "card") {
       if (!form.cardHolderName)
         newErrors.cardHolderName = "Card holder name is required";
@@ -65,32 +67,50 @@ const CheckoutPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+
   const handleSubmit = (e) => {
+   
     setLoadingCheckout(true);
     e.preventDefault();
     try {
       if (validate()) {
-        if (method === "card") {
+        console.log(form);
           handelCheckout(form);
-        }
+    
       }
     } catch (e) {
-    } finally {
-      setLoadingCheckout(false);
+      console.error(e);
     }
+   
   };
   const handelCheckout = async (paymentData) => {
     try {
-      const response = await checkout(paymentData);
-      if (response.success) {
-        navigate("/ShoppingCart/Checkout/PurchaseComplete");
+      
+      if (method === "paypal") {
+        const response = await checkout();
+       
+        if (response.success) {
+          navigate("/ShoppingCart/Checkout/PurchaseComplete");
+          setLoadingCheckout(false);
+        }
+
+      }else if(method === "card")
+      {
+        const response1 = await checkout();
+        const response2 = await addPayment(paymentData);
+        if (response1.success && response2.success) {
+          navigate("/ShoppingCart/Checkout/PurchaseComplete");
+          setLoadingCheckout(false);
+        }
       }
-      setLoadingCheckout(false);
+
+     
       setCart(defaultCart);
     } catch (e) {
-      console.log(e);
-    }
+      console.error(e);
+    } 
   };
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col px-20 py-20 pb-40 gap-7 w-full">
@@ -319,12 +339,12 @@ const CheckoutPage = () => {
               <button
                 className={`${
                   loadingCheckout
-                    ? " bg-black/40 text-white"
+                    ? "flex justify-center bg-black/40 text-white"
                     : "bg-black text-white"
                 }  rounded-xl py-5 font-bold text-lg`}
                 onClick={() => handleSubmit}
               >
-                {loadingCheckout ? "Checkout in progress" : "Checkout"}
+                {loadingCheckout ? <LoadingSpinner /> : "Checkout"}
               </button>
             )}
           </div>

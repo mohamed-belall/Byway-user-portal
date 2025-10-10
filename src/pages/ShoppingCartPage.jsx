@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { cartWithPersistenceAtom } from "../atoms/cartAtom";
 import { useNavigate } from "react-router-dom";
 import useCartServices from "../services/CartServices";
+import LoadingSpinner from "../components/common/Spinner/LoadingSpinner";
 
 const ShoppingCartPage = () => {
   const { getCartItems, removeItem } = useCartServices();
@@ -100,13 +101,13 @@ const ShoppingCartPage = () => {
                       <button
                         className={`${
                           loadingId === course.id
-                            ? "bg-red-100 text-black"
+                            ? "flex justify-center bg-red-100 text-black "
                             : "bg-red-500 text-white"
                         }   px-6 py-2 rounded-lg font-semibold`}
                         onClick={() => removeFromCart(course.id)}
                       >
                         {loadingId === course.id
-                          ? "removing in progress"
+                          ? <LoadingSpinner />
                           : "Remove"}
                       </button>
                     </div>

@@ -7,6 +7,7 @@ import lmsImage from "../../assets/lms.jpg";
 import { cartWithPersistenceAtom } from "../../atoms/cartAtom";
 import useCartServices from "../../services/CartServices";
 import GoogleAuthButton from "../../components/Auth/GoogleAuthButton";
+import LoadingSpinner from "../../components/common/Spinner/LoadingSpinner";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -103,7 +104,7 @@ export const Login = () => {
 
             {error && (
               <div
-                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
                 role="alert"
               >
                 <span className="block sm:inline">{error}</span>
@@ -115,10 +116,10 @@ export const Login = () => {
               type="submit"
               disabled={loading}
               className={`w-full ${
-                loading ? " bg-black/50 " : "bg-black cursor-pointer"
-              } text-white py-2 rounded-md font-medium hover:bg-gray-800 transition `}
+                loading ? " bg-black " : "bg-black cursor-pointer"
+              } flex justify-center text-white py-2 rounded-md font-medium hover:bg-gray-800 transition `}
             >
-              {loading ? "Sign In in progress ...." : "Sign In →"}
+              {loading ? <LoadingSpinner /> : "Sign In →"}
             </button>
           </form>
 

@@ -47,16 +47,27 @@ const useCartServices = () => {
       },
 
 
-      checkout: async (paymentData) => {
-        if (!paymentData) throw new Error("paymentData is required.");
+      checkout: async () => {
+    
         const response = await api.post(
           "/cart/checkout",
-          paymentData,
+     
           { headers: getAuthHeader() }
         );
         return response.data;
       },
-     
+      addPayment: async (paymentData) => {
+        if (!paymentData) throw new Error("paymentData is required.");
+        const response = await api.post(
+          "/cart/addPayment",
+          paymentData,
+          { headers: getAuthHeader() }
+        );
+        if (!response.data.success) {
+          throw new Error(response.data.message || "faild to save payment method");
+        }
+        return response.data;
+      },
     };
   return CartServices;
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import LmsImage from "../../assets/LandingPage1.png";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-row justify-center items-center gap-32 px-20">
       {/* left */}
@@ -15,9 +17,9 @@ const HeroSection = () => {
           here to guide you on your journey to success.
         </div>
         <div>
-          <div className="inline px-10 py-5 text-white rounded-xl text-xl bg-blue-500">
+          <button className="inline px-10 py-5 text-white rounded-xl text-xl bg-blue-500" onClick={() => navigate("/Login")}>
             Start Your Journy
-          </div>
+          </button>
         </div>
       </div>
       {/* right */}
