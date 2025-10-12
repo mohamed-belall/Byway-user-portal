@@ -351,7 +351,7 @@ const CoursesPage = () => {
               Oops! No courses match your search criteria
             </div>
           ) : (
-            <div className=" grid items-center justify-center sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-10 py-10 ">
+            <div className=" grid items-center justify-center sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5 py-10 ">
               {courses.map((course, index) => {
                 return (
                   <CourseCard

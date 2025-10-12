@@ -7,10 +7,10 @@ const CourseCard = ({ course, renderStars }) => {
 
   return (
     <button
-      className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden"
+      className="flex flex-col justify-between bg-white   min-h-full border border-gray-200 rounded-2xl shadow-md overflow-hidden"
       onClick={() => navigate(`/Courses/CourseDetails/${course.id}`)}
     >
-      <div className="relative p-4">
+      <div className="relative px-3 py-3 ">
         <img
           src={course.coverURL}
           alt={course.courseName}
@@ -21,8 +21,8 @@ const CourseCard = ({ course, renderStars }) => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-around items-start p-4">
-        <h3 className="text-3xl font-semibold">{course.title}</h3>
+      <div className="flex flex-col justify-between items-start px-3 py-3">
+        <h3 className="text-2xl font-semibold">{course.title}</h3>
         <p className="text-lg font-semibold text-gray-600">
           By {course.instructorName}
         </p>
